@@ -1,0 +1,716 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Acesso</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        header {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #FFCC00;
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #FF0000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #FFCC00;
+        }
+
+       
+        .main-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            margin-top: 10px;
+            color: #FFCC00;
+        }
+
+        .product-card p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .product-card .price {
+            color: #FF0000;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #111;
+            color: #fff;
+        }
+
+        .hero-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.hero-carousel {
+    display: flex;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+}
+
+.hero-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    position: relative;
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-caption {
+    position: absolute;
+    bottom: 10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFCC00;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-shadow: 2px 2px 5px #000;
+    font-size: 1rem;
+    width: 90%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hero-caption h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.hero-caption p {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.cta-button {
+    margin-top: 20px;
+}
+
+.cta-button button {
+    background-color: #FFCC00;
+    color: #000;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button button:hover {
+    background-color: #FF9900;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .product-card img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.pagination {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    display: inline-block;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid #FFCC00;
+    border-radius: 5px;
+    color: #FFCC00;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #FFCC00;
+    color: #000;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.pagination a.active {
+    background-color: #FFCC00;
+    color: #000;
+    pointer-events: none;
+}
+
+
+
+
+
+    </style>
+
+
+
+
+
+
+
+</head>
+<body>
+
+<header>
+    <h1>Auto Acesso</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+
+<section class="hero-container">
+    <div class="hero">
+      <div class="hero-carousel">
+        <div class="hero-slide">
+          <img src="https://via.placeholder.com/800x400" alt="LED Car Lights">
+          <div class="hero-caption">
+            <h2>LED Car Lights</h2>
+            <p>Brighten your ride with premium LED lights. KSh 1,500</p>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <img src="https://via.placeholder.com/800x400" alt="Custom Car Mats">
+          <div class="hero-caption">
+            <h2>Custom Car Mats</h2>
+            <p>Keep your car interior neat and stylish. KSh 2,500</p>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <img src="https://via.placeholder.com/800x400" alt="Car Window Tints">
+          <div class="hero-caption">
+            <h2>Car Window Tints</h2>
+            <p>Improve privacy and UV protection. KSh 3,000</p>
+          </div>
+        </div>
+      </div>
+      <div class="cta-button">
+        <button>Shop Now</button>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+
+<main class="main-container">
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+
+
+    
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Stickers">
+        <h3>Custom Stickers</h3>
+        <p>Stylish, durable stickers for your car.</p>
+        <div class="price">Starting at KSh 500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="LED Lights">
+        <h3>LED Lights</h3>
+        <p>Bright and energy-efficient car LED lights.</p>
+        <div class="price">KSh 3,000</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Seat Covers">
+        <h3>Seat Covers</h3>
+        <p>Comfortable and stylish covers for every car type.</p>
+        <div class="price">KSh 2,500</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Car Perfume">
+        <h3>Dash Perfume</h3>
+        <p>Keep your car smelling fresh with our premium perfumes.</p>
+        <div class="price">KSh 800</div>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wipers">
+        <h3>High-Performance Wipers</h3>
+        <p>Durable wipers for all weather conditions.</p>
+        <div class="price">KSh 1,200</div>
+    </div>
+</main>
+<div class="pagination-container" >
+    <ul class="pagination" id="pagination">
+        <li><a href="#" class="prev">&laquo; Prev</a></li>
+        <li><a href="#" class="active">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#" class="next">Next &raquo;</a></li>
+    </ul>
+</div>
+
+
+<footer>
+    <p>Contact us: <a href="tel:+254729301689" style="color: #FFCC00;">0729 301 689</a></p>
+    <p>Visit us: <a href="https://auto-accesso.click" style="color: #FFCC00;">auto-accesso.click</a> | <a href="https://auto-acesso.co.ke" style="color: #FFCC00;">auto-acesso.co.ke</a></p>
+</footer>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    
+    function showSlide(index) {
+        slides.forEach((slide, idx) => {
+            slide.style.transform = `translateX(${100 * (idx - index)}%)`;
+        });
+    }
+    
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }, 3000); // Slides every 3 seconds
+  </script>
+  
+
+<script>
+  const itemsPerPage = 18;
+  const products = document.querySelectorAll('.product-card');
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+  
+  function showPage(page) {
+      products.forEach((product, index) => {
+          product.style.display = (index >= itemsPerPage * (page - 1) && index < itemsPerPage * page) ? 'block' : 'none';
+      });
+  }
+  
+  function createPagination() {
+      const pagination = document.getElementById('pagination');
+      for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement('button');
+          btn.textContent = i;
+          btn.onclick = () => showPage(i);
+          pagination.appendChild(btn);
+      }
+  }
+  
+  createPagination();
+  showPage(1);
+</script>
+
+
+</body>
+</html>
