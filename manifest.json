@@ -1,0 +1,35 @@
+{
+  "name": "Auto Acesso",
+  "short_name": "Auto Acesso",
+  "description": "A shop for premium car accessories and customizations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FFCC00",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://via.placeholder.com/800x600.png",
+      "sizes": "800x600",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/1200x900.png",
+      "sizes": "1200x900",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "prefer_related_applications": false
+}
